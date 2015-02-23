@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  placed_on: 2015-02-22 19:52:45
+  tip: 1
+  notes: MyText
+  buyer_id: 1
+  shopper_id: 1
+  grocery_list_id: 1
+
+two:
+  placed_on: 2015-02-22 19:52:45
+  tip: 1
+  notes: MyText
+  buyer_id: 1
+  shopper_id: 1
+  grocery_list_id: 1

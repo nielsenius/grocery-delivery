@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @grocery_list.name %>
+</p>
+
+<%= link_to 'Edit', edit_grocery_list_path(@grocery_list) %> |
+<%= link_to 'Back', grocery_lists_path %>
