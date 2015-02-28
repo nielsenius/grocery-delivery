@@ -17,7 +17,8 @@ gem 'coffee-rails', '~> 4.1.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+# gem 'turbolinks'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -43,3 +44,55 @@ group :development, :test do
   gem 'spring'
 end
 
+
+# Use a gem for handling pagination
+gem 'will_paginate'
+
+# Use a gem for handling date validation
+gem 'validates_timeliness'
+
+# Use simple_form to clean up form views
+gem 'simple_form'
+
+# Use foundation for base CSS
+gem 'foundation-rails'
+
+# Use carrierwave to upload instructor photos
+gem 'carrierwave'
+
+# Use ActiveModel has_secure_password
+gem 'bcrypt-ruby', '3.1.5'
+
+gem 'cancancan'
+
+gem 'nested_form'
+
+gem 'jquery-ui-rails'
+
+
+# Additional gems that are very useful in Rails development
+group :development do
+  gem 'quiet_assets'
+  gem 'thin'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
+  gem 'wirble'
+  gem 'hirb'
+  gem 'faker'
+end
+
+# Gems used only in testing
+group :test do
+  gem 'shoulda'
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+  gem 'mocha', require: false
+  gem 'simplecov'
+  gem 'turn'
+  gem 'single_test'
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'capybara'
+end
