@@ -61,7 +61,7 @@ gem 'foundation-rails'
 gem 'carrierwave'
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '3.1.5'
+gem 'bcrypt'
 
 gem 'cancancan'
 
