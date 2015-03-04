@@ -2,8 +2,10 @@
 
 one:
   name: MyString
-  amount: 1
+  amount: MyString
+  grocery_list_id: 1
 
 two:
   name: MyString
-  amount: 1
+  amount: MyString
+  grocery_list_id: 1
