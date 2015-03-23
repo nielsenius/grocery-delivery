@@ -13,15 +13,14 @@
       <div id="list_items">
         <%= list_form.simple_fields_for :items do |item_form| %>
 					<div class="fields">
-	          <%= item_form.link_to_remove("x") %>
-						<!-- fields -->
+					  <%= item_form.link_to_remove("x") %>
 						<%= item_form.input :name %>
 						<%= item_form.input :amount %>
 						<%= item_form.input :grocery_list_id %>
 					</div>
         <% end %>
         <p>
-          <br /><%# list_form.link_to_add("Add Item", :items, :class => 'button tiny') %>
+          <br /><%= list_form.link_to_add("Add Item", :items, :class => 'button tiny') %>
         </p>
       </div> 
     </div>
