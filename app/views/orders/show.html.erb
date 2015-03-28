@@ -2,7 +2,7 @@
 
 <p>
   <strong>Placed on:</strong>
-  <%= @order.placed_on %>
+  <%= @order.created_at %>
 </p>
 
 <p>
@@ -13,6 +13,11 @@
 <p>
   <strong>Notes:</strong>
   <%= @order.notes %>
+</p>
+
+<p>
+  <strong>Store:</strong>
+  <%= @order.store %>
 </p>
 
 <p>

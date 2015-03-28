@@ -29,9 +29,10 @@ ActiveRecord::Schema.define(version: 20150223005245) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.datetime "placed_on"
     t.integer  "tip"
     t.text     "notes"
+    t.string   "store"
+    t.datetime "delivery_time"
     t.integer  "buyer_id"
     t.integer  "shopper_id"
     t.integer  "grocery_list_id"
