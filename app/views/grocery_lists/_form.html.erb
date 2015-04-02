@@ -1,21 +1,31 @@
-<%= form_for(@grocery_list) do |f| %>
-  <% if @grocery_list.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@grocery_list.errors.count, "error") %> prohibited this grocery_list from being saved:</h2>
-
-      <ul>
-      <% @grocery_list.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= simple_nested_form_for @grocery_list, :html => { :class => 'form-horizontal' } do |list_form| %>
+  <div class="row">
+    <div class="span7">
+      <fieldset>
+        <legend><%= controller.action_name.capitalize %> Grocery List</legend>
+	  		<%= list_form.input :name %>
+	  		<%= list_form.input :user_id %>
+      </fieldset>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="span5">
+    <legend>Grocery List Items</legend>
+      <div id="list_items">
+        <%= list_form.simple_fields_for :items do |item_form| %>
+					<div class="fields">
+					  <%= item_form.link_to_remove("x") %>
+						<%= item_form.input :name %>
+						<%= item_form.input :amount %>
+					</div>
+        <% end %>
+        <p>
+          <br /><%= list_form.link_to_add("Add Item", :items, :class => 'button tiny') %>
+        </p>
+      </div> 
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= list_form.submit nil, :class => 'button radius' %>
+    <%= link_to 'Cancel', grocery_lists_path, :class => 'button secondary' %>
   </div>
 <% end %>

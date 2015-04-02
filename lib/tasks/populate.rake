@@ -77,18 +77,20 @@ namespace :db do
     # Orders
     
     order1 = Order.new
-    order1.placed_on = DateTime.new(2015, 1, 2, 3, 4, 5, '+7')
     order1.tip = 10
     order1.notes = 'All organic please!'
+    order1.store = 'Giant Eagle Murray Ave'
+    order1.delivery_time = DateTime.new(2015, 4, 1, 8, 15, 0, '+7')
     order1.buyer_id = 1
     order1.shopper_id = 2
     order1.grocery_list_id = 1
     order1.save!
     
     order2 = Order.new
-    order2.placed_on = DateTime.new(2015, 1, 2, 5, 4, 3, '+7')
     order2.tip = 12
     order2.notes = 'No GMOs please!'
+    order2.store = 'Whole Foods'
+    order2.delivery_time = DateTime.new(2015, 4, 1, 9, 45, 0, '+7')
     order2.buyer_id = 2
     order2.shopper_id = 1
     order2.grocery_list_id = 2

@@ -12,16 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :placed_on %><br>
-    <%= f.datetime_select :placed_on %>
-  </div>
-  <div class="field">
     <%= f.label :tip %><br>
     <%= f.number_field :tip %>
   </div>
   <div class="field">
     <%= f.label :notes %><br>
     <%= f.text_area :notes %>
+  </div>
+  <div class="field">
+    <%= f.label :store %><br>
+    <%= f.text_field :store %>
+  </div>
+  <div class="field">
+    <%= f.label :delivery_time %><br>
+    <%= f.datetime_field :delivery_time %>
   </div>
   <div class="field">
     <%= f.label :buyer_id %><br>

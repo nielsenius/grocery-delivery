@@ -8,7 +8,9 @@
       <th>Placed on</th>
       <th>Tip</th>
       <th>Notes</th>
-      <th>Buyer</th>
+			<th>Store</th>
+      <th>Delivery Time</th>
+			<th>Buyer</th>
       <th>Shopper</th>
       <th>Grocery list</th>
       <th colspan="3"></th>
@@ -18,9 +20,11 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= order.placed_on %></td>
+        <td><%= order.created_at %></td>
         <td><%= order.tip %></td>
         <td><%= order.notes %></td>
+				<td><%= order.store %></td>
+				<td><%= order.delivery_time %></td>
         <td><%= order.buyer_id %></td>
         <td><%= order.shopper_id %></td>
         <td><%= order.grocery_list_id %></td>
