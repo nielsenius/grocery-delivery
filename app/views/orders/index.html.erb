@@ -25,9 +25,9 @@
         <td><%= order.notes %></td>
 				<td><%= order.store %></td>
 				<td><%= order.delivery_time.strftime('%B %e, %Y %I:%M %P') %></td>
-        <td><%= order.buyer_id %></td>
-        <td><%= order.shopper_id %></td>
-        <td><%= order.grocery_list_id %></td>
+        <td><%= (User.find(order.buyer_id)).name %></td>
+        <td><%= (User.find(order.shopper_id)).name %></td>
+        <td><%= (GroceryList.find(order.grocery_list_id)).name %></td>
         <td><%= link_to 'Show', order %></td>
         <td><%= link_to 'Edit', edit_order_path(order) %></td>
         <td><%= link_to 'Delete', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
