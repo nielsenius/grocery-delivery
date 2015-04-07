@@ -18,7 +18,8 @@ namespace :db do
     matt.first_name = 'Matt'
     matt.last_name = 'Nielsen'
     matt.phone_number = '1234567890'
-    matt.password_digest = 'secret'
+    matt.password = "secret"
+    matt.password_confirmation = "secret"
     matt.location = 'Mudge'
     matt.save!
     
@@ -26,7 +27,8 @@ namespace :db do
     maggie.first_name = 'Maggie'
     maggie.last_name = 'Li'
     maggie.phone_number = '2345678901'
-    maggie.password_digest = 'secret'
+    maggie.password = "secret"
+    maggie.password_confirmation = "secret"
     maggie.location = 'West-Wing'
     maggie.save!
     
