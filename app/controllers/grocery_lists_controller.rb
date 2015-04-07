@@ -3,7 +3,7 @@ class GroceryListsController < ApplicationController
 
   # GET /grocery_lists
   def index
-    @grocery_lists = GroceryList.all
+    @grocery_lists = GroceryList.for_user(current_user).all
   end
 
   # GET /grocery_lists/1

@@ -1,0 +1,24 @@
+<h3>Login</h3>
+
+<%= form_tag sessions_path do %>
+
+	<div class="control-group">
+    <%= label_tag :phone_number %>
+    <div class="controls">
+      <%= text_field_tag :phone_number, params[:phone_number] %>
+    </div>
+  </div>
+
+	<div class="control-group">
+    <%= label_tag :password %>
+    <div class="controls">
+      <%= password_field_tag :password %>
+    </div>
+  </div>
+
+  <div class="actions">
+		<%= submit_tag "Log In" %>
+		<%= link_to 'Sign Up', signup_path %>
+	</div>
+	
+<% end %>

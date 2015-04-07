@@ -6,6 +6,8 @@ class GroceryList < ActiveRecord::Base
   
   accepts_nested_attributes_for :items, reject_if: lambda { |item| item[:name].blank? }, allow_destroy: true
   
+  scope :for_user, ->(user_id) { where('user_id = ?', user_id) }
+  
   validates_presence_of :name
 	validates_presence_of :user_id
   
