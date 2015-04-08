@@ -21,8 +21,9 @@ class OrdersController < ApplicationController
 
   # POST /orders
   def create
+    puts order_params
     @order = Order.new(order_params)
-
+    
     if @order.save
       redirect_to @order
     else
@@ -53,6 +54,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:tip, :notes, :store, :delivery_time, :buyer_id, :shopper_id, :grocery_list_id)
+      params.require(:order).permit(:tip, :notes, :store, :delivery_time, :shopper_id, :grocery_list_id).merge(buyer_id: current_user.id)
     end
 end
