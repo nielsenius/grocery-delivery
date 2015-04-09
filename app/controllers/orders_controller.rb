@@ -21,7 +21,6 @@ class OrdersController < ApplicationController
 
   # POST /orders
   def create
-    puts order_params
     @order = Order.new(order_params)
     
     if @order.save
