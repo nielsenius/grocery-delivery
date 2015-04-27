@@ -1,5 +1,7 @@
 <h3>Login</h3>
 
+<%= image_tag "logo_color.png" %>
+
 <%= form_tag sessions_path do %>
 
 	<div class="control-group">
@@ -17,8 +19,8 @@
   </div>
 
   <div class="actions">
-		<%= submit_tag "Log In" %>
-		<%= link_to 'Sign Up', signup_path %>
+		<%= submit_tag "Log In", class: 'button round success' %>
+		<%= link_to 'Sign Up', signup_path, class: 'button round' %>
 	</div>
 	
 <% end %>

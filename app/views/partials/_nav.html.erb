@@ -1,31 +1,12 @@
 <div class="contain-to-grid">
   <nav class="top-bar" data-topbar>
-    <ul class="title-area">
-      <li class="name">
-				<%# link_to image_tag('logo.png'), home_path %>
-				<%= link_to 'Home', home_path %>
-      </li>
-    </ul>
 		<section class="top-bar-section">
-	    <ul class="right">
+	    <ul class="left">
 				
-				<li><%= link_to 'Users', users_path %></li>
-				<li><%= link_to 'Orders', orders_path %></li>
-				<li><%= link_to 'Lists', grocery_lists_path %></li>
-				<li><%= link_to 'Items', items_path %></li>
-				
-			  <% if true #logged_in? %>
-	      	<li class="has-form">
-						<%# link_to current_user.proper_name, <some path>, class: "small button" %>
-						<%= link_to 'Username', home_path, class: "small button" %>
-					</li>
-			  <% else %>
-	      	<li class="has-form">
-						<%= link_to 'Log In', login_path, class: "small button" %>
-					</li>
-			  <% end %>
+				<li><%= link_to 'Back', home_path %></li>
 				
 	    </ul>
+			
 	  </section>
   </nav>
 </div>
