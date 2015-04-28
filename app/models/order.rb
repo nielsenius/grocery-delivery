@@ -8,4 +8,8 @@ class Order < ActiveRecord::Base
   
 	validates_numericality_of :tip, only_integer: true, greater_than: 0
   
+  def num_items
+    Item.where(grocery_list_id: grocery_list_id).count
+  end
+  
 end

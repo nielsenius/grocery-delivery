@@ -1,39 +1,49 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Placed on:</strong>
-  <%= @order.created_at %>
-</p>
+<h1>Order Details</h1>
 
-<p>
-  <strong>Tip:</strong>
-  <%= @order.tip %>
-</p>
+<table>
+  <tr>
+		<td>Placed On</td>
+    <td><%= @order.created_at %></td>
+	</tr>
+	<tr>
+		<td>Tip</td>
+    <td><%= number_to_currency @order.tip %></td>
+	</tr>
+	<tr>
+		<td>Delivery Time</td>
+    <td><%= @order.delivery_time %></td>
+  </tr>
+	<tr>
+		<td>Notes</td>
+    <td><%= @order.notes %></td>
+  </tr>
+	<tr>
+		<td>Store</td>
+    <td><%= @order.store %></td>
+  </tr>
+	<tr>
+		<td>Buyer</td>
+    <td><%= link_to User.find(@order.buyer_id).proper_name, user_path(@order.buyer_id) %></td>
+  </tr>
+	<tr>
+		<td>Shopper</td>
+		<% if @order.shopper_id.nil? %>
+			<td>None</td>
+		<% else %>
+    	<td><%= link_to User.find(@order.shopper_id).proper_name, user_path(@order.shopper_id) %></td>
+		<% end %>
+	</tr>
+</table>
 
-<p>
-  <strong>Notes:</strong>
-  <%= @order.notes %>
-</p>
+<h3>Items</h3>
 
-<p>
-  <strong>Store:</strong>
-  <%= @order.store %>
-</p>
-
-<p>
-  <strong>Buyer:</strong>
-  <%= @order.buyer_id %>
-</p>
-
-<p>
-  <strong>Shopper:</strong>
-  <%= @order.shopper_id %>
-</p>
-
-<p>
-  <strong>Grocery list:</strong>
-  <%= @order.grocery_list_id %>
-</p>
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<table>
+	<% @items.each do |item| %>
+		<tr>
+			<td><%= item.amount %></td>
+			<td><%= item.name %></td>
+		</tr>
+	<% end %>
+</table>

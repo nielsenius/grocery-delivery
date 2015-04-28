@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/1
   def show
+    @items = Item.where(grocery_list_id: @order.grocery_list_id).all
   end
 
   # GET /orders/new

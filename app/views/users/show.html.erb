@@ -1,29 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
+<h1>My Profile</h1>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
+<table>
+  <tr>
+		<td>Name</td>
+    <td><%= @user.proper_name %></td>
+	</tr>
+	<tr>
+		<td>Phone Number</td>
+    <td><%= number_to_phone @user.phone_number %></td>
+	</tr>
+	<tr>
+		<td>Location</td>
+    <td><%= @user.location %></td>
+  </tr>
+</table>
 
-<p>
-  <strong>Phone number:</strong>
-  <%= @user.phone_number %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @user.location %>
-</p>
-
-<p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Edit Profile', edit_user_path(@user), class: 'button round' %>
