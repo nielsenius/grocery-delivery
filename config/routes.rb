@@ -16,5 +16,5 @@ Rails.application.routes.draw do
   get 'home', to: 'home#index', as: :home
   
   # set the root URL
-  root to: 'home#index'
+  root to: 'sessions#new'
 end

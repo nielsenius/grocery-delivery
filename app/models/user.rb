@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
   end
   
   def self.authenticate(phone_number, password)
-    find_by_username(phone_number).try(:authenticate, password)
+    find_by_phone_number(phone_number).try(:authenticate, password)
   end
   
 end
