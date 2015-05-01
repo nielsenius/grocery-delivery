@@ -29,10 +29,11 @@
   </div>
   <div class="field">
     <%= f.label :delivery_time %><br>
-    <%= f.datetime_field :delivery_time %>
+    <%= f.select :delivery_time, Order.times, prompt: 'Choose...' %>
   </div>
   
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit nil, class: 'button round' %>
+		<%= link_to 'Cancel', my_orders_path, :class => 'button round secondary' %>
   </div>
 <% end %>

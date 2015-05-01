@@ -1,6 +1,11 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-
+  
+  # GET /my_orders
+  def my_orders
+    @orders = Order.where(buyer_id: current_user).all
+  end
+  
   # GET /orders
   def index
     @orders = Order.all

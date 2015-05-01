@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   
   # semi-static routes
   get 'home', to: 'home#index', as: :home
+  get 'my_orders', to: 'orders#my_orders', as: :my_orders
   
   # set the root URL
   root to: 'sessions#new'
