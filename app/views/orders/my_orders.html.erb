@@ -1,25 +1,5 @@
 <h1>My Orders</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Items</th>
-      <th>Tip</th>
-      <th>Delivery Time</th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.num_items %></td>
-        <td><%= number_to_currency order.tip %></td>
-				<td><%= order.delivery_time.strftime('%B %e, %Y %I:%M %P') %></td>
-        <td><%= link_to 'More...', order %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render 'list' %>
 
 <%= link_to 'New Order', new_order_path, class: 'button round' %>

@@ -5,7 +5,7 @@
 <table>
   <tr>
 		<td>Placed On</td>
-    <td><%= @order.created_at %></td>
+    <td><%= @order.created_at.strftime('%A %-I:%M %P') %></td>
 	</tr>
 	<tr>
 		<td>Tip</td>
@@ -13,7 +13,7 @@
 	</tr>
 	<tr>
 		<td>Delivery Time</td>
-    <td><%= @order.delivery_time %></td>
+    <td><%= @order.delivery_time.strftime('%A %-I:%M %P') %></td>
   </tr>
 	<tr>
 		<td>Notes</td>
@@ -47,3 +47,11 @@
 		</tr>
 	<% end %>
 </table>
+
+<% if @order.buyer_id == current_user.id %>
+	<%= link_to 'Edit Order', edit_order_path(@order), class: 'button round' %>
+<% elsif @order.shopper_id == current_user.id %>
+	<%# link_to 'Reject Order', reject_order_path(@order), class: 'button round' %>
+<% elsif @order.shopper_id == nil %>
+	<%= link_to 'Accept Order', accept_order_path(@order), class: 'button round' %>
+<% end %>

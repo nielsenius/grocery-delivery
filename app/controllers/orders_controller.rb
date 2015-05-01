@@ -1,5 +1,17 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:accept_order, :show, :edit, :update, :destroy]
+  
+  # GET /shopping
+  def shopping
+    @orders = Order.where(shopper_id: current_user).all
+  end
+  
+  # GET /accept_order/1
+  def accept_order
+    @order.shopper_id = current_user.id
+    @order.save
+    redirect_to @order
+  end
   
   # GET /my_orders
   def my_orders
@@ -8,7 +20,7 @@ class OrdersController < ApplicationController
   
   # GET /orders
   def index
-    @orders = Order.all
+    @orders = Order.where(shopper_id: nil).all
   end
 
   # GET /orders/1
