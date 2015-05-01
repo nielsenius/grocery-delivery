@@ -5,6 +5,7 @@ class CreateOrders < ActiveRecord::Migration
       t.text :notes
       t.string :store
       t.datetime :delivery_time
+      t.boolean :complete, default: false
       t.integer :buyer_id
       t.integer :shopper_id
       t.integer :grocery_list_id

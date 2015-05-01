@@ -50,8 +50,8 @@
 
 <% if @order.buyer_id == current_user.id %>
 	<%= link_to 'Edit Order', edit_order_path(@order), class: 'button round' %>
-<% elsif @order.shopper_id == current_user.id %>
-	<%# link_to 'Reject Order', reject_order_path(@order), class: 'button round' %>
+<% elsif @order.shopper_id == current_user.id && !@order.complete %>
+	<%= link_to 'Complete Order', complete_path(@order), class: 'button round' %>
 <% elsif @order.shopper_id == nil %>
 	<%= link_to 'Accept Order', accept_order_path(@order), class: 'button round' %>
 <% end %>

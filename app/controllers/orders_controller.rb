@@ -1,5 +1,12 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:accept_order, :show, :edit, :update, :destroy]
+  before_action :set_order, only: [:complete, :accept_order, :show, :edit, :update, :destroy]
+  
+  # GET /complete/1
+  def complete
+    @order.complete = true
+    @order.save
+    redirect_to @order
+  end
   
   # GET /shopping
   def shopping

@@ -19363,3 +19363,973 @@ Processing by OrdersController#shopping as HTML
   Rendered partials/_content.html.erb (0.1ms)
   Rendered partials/_footer.html.erb (0.0ms)
 Completed 200 OK in 125ms (Views: 122.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2015-05-01 16:11:44 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered home/index.html.erb within layouts/application (2.8ms)
+  Rendered partials/_content.html.erb (0.4ms)
+  Rendered partials/_footer.html.erb (0.2ms)
+Completed 200 OK in 217ms (Views: 187.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2015-05-01 16:11:48 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/login
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2015-05-01 16:11:48 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (2.7ms)
+  Rendered partials/_content.html.erb (0.0ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 109ms (Views: 108.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2015-05-01 16:12:34 -0400
+Processing by UsersController#new as HTML
+  Rendered users/_form.html.erb (266.4ms)
+  Rendered users/new.html.erb within layouts/application (267.5ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 369ms (Views: 369.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2015-05-01 16:12:44 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pXIXkyvzkUeJPehmkkhosovVa8mpNRgkdbGtrzPJX2HGgd/sax602RZ6TFF/BHa/wJaM4ny2na+JpGSaKUv3rQ==", "phone_number"=>"1234567890", "password"=>"[FILTERED]", "commit"=>"Log In"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone_number" = ? LIMIT 1[0m  [["phone_number", "1234567890"]]
+Redirected to http://localhost:3000/home
+Completed 302 Found in 62ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2015-05-01 16:12:44 -0400
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered home/index.html.erb within layouts/application (0.6ms)
+  Rendered partials/_content.html.erb (0.0ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 113ms (Views: 111.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-05-01 16:12:46 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered users/show.html.erb within layouts/application (3.2ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 89ms (Views: 87.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/1/edit" for 127.0.0.1 at 2015-05-01 16:12:51 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered users/_form.html.erb (2.2ms)
+  Rendered users/edit.html.erb within layouts/application (2.9ms)
+  Rendered partials/_content.html.erb (0.0ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 118ms (Views: 116.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/grocery_lists" for 127.0.0.1 at 2015-05-01 16:12:56 -0400
+Processing by GroceryListsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mGroceryList Load (0.1ms)[0m  SELECT "grocery_lists".* FROM "grocery_lists" WHERE (user_id = 1)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "items" WHERE "items"."grocery_list_id" = ?[0m  [["grocery_list_id", 1]]
+  Rendered grocery_lists/index.html.erb within layouts/application (17.1ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 131ms (Views: 124.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/grocery_lists/1" for 127.0.0.1 at 2015-05-01 16:13:00 -0400
+Processing by GroceryListsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mGroceryList Load (0.1ms)[0m  SELECT  "grocery_lists".* FROM "grocery_lists" WHERE "grocery_lists"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."grocery_list_id" = ?[0m  [["grocery_list_id", 1]]
+  Rendered grocery_lists/show.html.erb within layouts/application (6.0ms)
+  Rendered partials/_content.html.erb (0.0ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 88ms (Views: 85.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/grocery_lists/1/edit" for 127.0.0.1 at 2015-05-01 16:13:04 -0400
+Processing by GroceryListsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mGroceryList Load (0.1ms)[0m  SELECT  "grocery_lists".* FROM "grocery_lists" WHERE "grocery_lists"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."grocery_list_id" = ?  [["grocery_list_id", 1]]
+  Rendered grocery_lists/_form.html.erb (51.4ms)
+  Rendered grocery_lists/edit.html.erb within layouts/application (52.4ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 149ms (Views: 147.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/my_orders" for 127.0.0.1 at 2015-05-01 16:13:27 -0400
+Processing by OrdersController#my_orders as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mOrder Load (0.1ms)[0m  SELECT "orders".* FROM "orders" WHERE "orders"."buyer_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "items" WHERE "items"."grocery_list_id" = ?[0m  [["grocery_list_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "items" WHERE "items"."grocery_list_id" = ?  [["grocery_list_id", 1]]
+  Rendered orders/_list.html.erb (14.8ms)
+  Rendered orders/my_orders.html.erb within layouts/application (15.6ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 128ms (Views: 124.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/orders" for 127.0.0.1 at 2015-05-01 16:13:30 -0400
+Processing by OrdersController#index as HTML
+  [1m[36mOrder Load (0.1ms)[0m  [1mSELECT "orders".* FROM "orders" WHERE "orders"."shopper_id" IS NULL[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "items" WHERE "items"."grocery_list_id" = ?  [["grocery_list_id", 1]]
+  Rendered orders/_list.html.erb (4.8ms)
+  Rendered orders/index.html.erb within layouts/application (5.7ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 109ms (Views: 108.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/shopping" for 127.0.0.1 at 2015-05-01 16:13:34 -0400
+Processing by OrdersController#shopping as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mOrder Load (0.1ms)[0m  SELECT "orders".* FROM "orders" WHERE "orders"."shopper_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "items" WHERE "items"."grocery_list_id" = ?[0m  [["grocery_list_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "items" WHERE "items"."grocery_list_id" = ?  [["grocery_list_id", 4]]
+  Rendered orders/_list.html.erb (9.8ms)
+  Rendered orders/shopping.html.erb within layouts/application (10.6ms)
+  Rendered partials/_content.html.erb (0.0ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 104ms (Views: 101.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/orders/4" for 127.0.0.1 at 2015-05-01 16:13:37 -0400
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mOrder Load (0.1ms)[0m  [1mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."grocery_list_id" = ?  [["grocery_list_id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered orders/show.html.erb within layouts/application (8.0ms)
+  Rendered partials/_content.html.erb (0.0ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 110ms (Views: 107.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/orders" for 127.0.0.1 at 2015-05-01 16:13:43 -0400
+Processing by OrdersController#index as HTML
+  [1m[35mOrder Load (0.1ms)[0m  SELECT "orders".* FROM "orders" WHERE "orders"."shopper_id" IS NULL
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "items" WHERE "items"."grocery_list_id" = ?[0m  [["grocery_list_id", 1]]
+  Rendered orders/_list.html.erb (4.9ms)
+  Rendered orders/index.html.erb within layouts/application (5.5ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 100ms (Views: 99.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/my_orders" for 127.0.0.1 at 2015-05-01 16:13:45 -0400
+Processing by OrdersController#my_orders as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mOrder Load (0.3ms)[0m  [1mSELECT "orders".* FROM "orders" WHERE "orders"."buyer_id" = 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "items" WHERE "items"."grocery_list_id" = ?  [["grocery_list_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "items" WHERE "items"."grocery_list_id" = ?[0m  [["grocery_list_id", 1]]
+  Rendered orders/_list.html.erb (6.7ms)
+  Rendered orders/my_orders.html.erb within layouts/application (7.4ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 102ms (Views: 99.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/orders/1" for 127.0.0.1 at 2015-05-01 16:13:47 -0400
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mOrder Load (0.1ms)[0m  SELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."grocery_list_id" = ?[0m  [["grocery_list_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered orders/show.html.erb within layouts/application (7.0ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 110ms (Views: 107.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/grocery_lists" for 127.0.0.1 at 2015-05-01 16:14:37 -0400
+Processing by GroceryListsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mGroceryList Load (0.1ms)[0m  SELECT "grocery_lists".* FROM "grocery_lists" WHERE (user_id = 1)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "items" WHERE "items"."grocery_list_id" = ?[0m  [["grocery_list_id", 1]]
+  Rendered grocery_lists/index.html.erb within layouts/application (4.7ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 105ms (Views: 102.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/grocery_lists/new" for 127.0.0.1 at 2015-05-01 16:14:38 -0400
+Processing by GroceryListsController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered grocery_lists/_form.html.erb (14.2ms)
+  Rendered grocery_lists/new.html.erb within layouts/application (15.1ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 106ms (Views: 102.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/grocery_lists" for 127.0.0.1 at 2015-05-01 16:14:45 -0400
+Processing by GroceryListsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mGroceryList Load (0.1ms)[0m  SELECT "grocery_lists".* FROM "grocery_lists" WHERE (user_id = 1)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "items" WHERE "items"."grocery_list_id" = ?[0m  [["grocery_list_id", 1]]
+  Rendered grocery_lists/index.html.erb within layouts/application (4.4ms)
+  Rendered partials/_content.html.erb (0.0ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 105ms (Views: 102.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/my_orders" for 127.0.0.1 at 2015-05-01 16:14:51 -0400
+Processing by OrdersController#my_orders as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mOrder Load (0.1ms)[0m  [1mSELECT "orders".* FROM "orders" WHERE "orders"."buyer_id" = 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "items" WHERE "items"."grocery_list_id" = ?  [["grocery_list_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "items" WHERE "items"."grocery_list_id" = ?[0m  [["grocery_list_id", 1]]
+  Rendered orders/_list.html.erb (6.8ms)
+  Rendered orders/my_orders.html.erb within layouts/application (7.5ms)
+  Rendered partials/_content.html.erb (0.0ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 106ms (Views: 103.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/orders/new" for 127.0.0.1 at 2015-05-01 16:14:54 -0400
+Processing by OrdersController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mGroceryList Load (0.1ms)[0m  [1mSELECT "grocery_lists".* FROM "grocery_lists" WHERE (user_id = 1)[0m
+  Rendered orders/_form.html.erb (8.8ms)
+  Rendered orders/new.html.erb within layouts/application (9.7ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 107ms (Views: 107.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/my_orders" for 127.0.0.1 at 2015-05-01 16:15:12 -0400
+Processing by OrdersController#my_orders as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mOrder Load (0.1ms)[0m  [1mSELECT "orders".* FROM "orders" WHERE "orders"."buyer_id" = 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "items" WHERE "items"."grocery_list_id" = ?  [["grocery_list_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "items" WHERE "items"."grocery_list_id" = ?[0m  [["grocery_list_id", 1]]
+  Rendered orders/_list.html.erb (7.0ms)
+  Rendered orders/my_orders.html.erb within layouts/application (7.6ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 106ms (Views: 103.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/my_orders" for 127.0.0.1 at 2015-05-01 16:15:29 -0400
+Processing by OrdersController#my_orders as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mOrder Load (0.1ms)[0m  [1mSELECT "orders".* FROM "orders" WHERE "orders"."buyer_id" = 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "items" WHERE "items"."grocery_list_id" = ?  [["grocery_list_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "items" WHERE "items"."grocery_list_id" = ?[0m  [["grocery_list_id", 1]]
+  Rendered orders/_list.html.erb (5.9ms)
+  Rendered orders/my_orders.html.erb within layouts/application (6.5ms)
+  Rendered partials/_content.html.erb (0.0ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 105ms (Views: 103.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/orders" for 127.0.0.1 at 2015-05-01 16:15:32 -0400
+Processing by OrdersController#index as HTML
+  [1m[35mOrder Load (0.1ms)[0m  SELECT "orders".* FROM "orders" WHERE "orders"."shopper_id" IS NULL
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "items" WHERE "items"."grocery_list_id" = ?[0m  [["grocery_list_id", 1]]
+  Rendered orders/_list.html.erb (4.8ms)
+  Rendered orders/index.html.erb within layouts/application (5.4ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 102ms (Views: 101.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/orders/3" for 127.0.0.1 at 2015-05-01 16:15:33 -0400
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mOrder Load (0.1ms)[0m  SELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."grocery_list_id" = ?  [["grocery_list_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered orders/show.html.erb within layouts/application (6.2ms)
+  Rendered partials/_content.html.erb (0.0ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 101ms (Views: 98.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/orders" for 127.0.0.1 at 2015-05-01 16:15:41 -0400
+Processing by OrdersController#index as HTML
+  [1m[35mOrder Load (0.1ms)[0m  SELECT "orders".* FROM "orders" WHERE "orders"."shopper_id" IS NULL
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "items" WHERE "items"."grocery_list_id" = ?[0m  [["grocery_list_id", 1]]
+  Rendered orders/_list.html.erb (4.3ms)
+  Rendered orders/index.html.erb within layouts/application (4.8ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 107ms (Views: 106.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/orders/3" for 127.0.0.1 at 2015-05-01 16:15:44 -0400
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mOrder Load (0.1ms)[0m  SELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."grocery_list_id" = ?  [["grocery_list_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered orders/show.html.erb within layouts/application (6.0ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.1ms)
+Completed 200 OK in 105ms (Views: 103.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/shopping" for 127.0.0.1 at 2015-05-01 16:15:58 -0400
+Processing by OrdersController#shopping as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mOrder Load (0.1ms)[0m  [1mSELECT "orders".* FROM "orders" WHERE "orders"."shopper_id" = 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "items" WHERE "items"."grocery_list_id" = ?  [["grocery_list_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "items" WHERE "items"."grocery_list_id" = ?[0m  [["grocery_list_id", 4]]
+  Rendered orders/_list.html.erb (7.9ms)
+  Rendered orders/shopping.html.erb within layouts/application (8.6ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 109ms (Views: 106.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/orders/2" for 127.0.0.1 at 2015-05-01 16:16:01 -0400
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mOrder Load (0.1ms)[0m  SELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."grocery_list_id" = ?[0m  [["grocery_list_id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered orders/show.html.erb within layouts/application (8.0ms)
+  Rendered partials/_content.html.erb (0.0ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 101ms (Views: 99.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-05-01 17:34:49 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (9.4ms)
+  Rendered partials/_content.html.erb (0.3ms)
+  Rendered partials/_footer.html.erb (0.1ms)
+Completed 200 OK in 188ms (Views: 187.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2015-05-01 17:35:01 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+G0NpertUbfV/09xJlA/ITjlygmkJnkrikHRS6LXrc2bnsXaqgB0KUq460bLHCEsc6YtInGl/KB2VBh+uFUFAQ==", "phone_number"=>"1234567890", "password"=>"[FILTERED]", "commit"=>"Log In"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone_number" = ? LIMIT 1  [["phone_number", "1234567890"]]
+Redirected to http://localhost:3000/home
+Completed 302 Found in 73ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2015-05-01 17:35:01 -0400
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered home/index.html.erb within layouts/application (2.1ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (3.8ms)
+Completed 200 OK in 122ms (Views: 119.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/orders" for 127.0.0.1 at 2015-05-01 17:35:04 -0400
+Processing by OrdersController#index as HTML
+  [1m[35mOrder Load (0.1ms)[0m  SELECT "orders".* FROM "orders" WHERE "orders"."shopper_id" IS NULL
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "items" WHERE "items"."grocery_list_id" = ?[0m  [["grocery_list_id", 1]]
+  Rendered orders/_list.html.erb (237.3ms)
+  Rendered orders/index.html.erb within layouts/application (238.2ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 342ms (Views: 337.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/orders/3" for 127.0.0.1 at 2015-05-01 17:35:07 -0400
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mOrder Load (0.1ms)[0m  SELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."grocery_list_id" = ?  [["grocery_list_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered orders/show.html.erb within layouts/application (10.9ms)
+  Rendered partials/_content.html.erb (0.0ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 139ms (Views: 136.3ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.6ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateUsers (20150223005045)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar, "last_name" varchar, "phone_number" varchar, "password_digest" varchar, "location" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150223005045"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreateGroceryLists (20150223005108)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "grocery_lists" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150223005108"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateItems (20150223005136)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "amount" varchar, "grocery_list_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150223005136"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateOrders (20150223005245)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "orders" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tip" integer, "notes" text, "store" varchar, "delivery_time" datetime, "complete" boolean DEFAULT 'f', "buyer_id" integer, "shopper_id" integer, "grocery_list_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150223005245"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.1ms)[0m  CREATE TABLE "grocery_lists" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "amount" varchar, "grocery_list_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.9ms)[0m  CREATE TABLE "orders" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tip" integer, "notes" text, "store" varchar, "delivery_time" datetime, "complete" boolean DEFAULT 'f', "buyer_id" integer, "shopper_id" integer, "grocery_list_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar, "last_name" varchar, "phone_number" varchar, "password_digest" varchar, "location" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.8ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150223005245')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150223005045')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150223005108')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150223005136')[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "phone_number", "password_digest", "location", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Matt"], ["last_name", "Nielsen"], ["phone_number", "1234567890"], ["password_digest", "$2a$10$sjE48FhT4KVlfFq208cZGO8jkE3qY4MFBdDfnwlc0TUwmzSpA3Ya2"], ["location", "Mudge"], ["created_at", "2015-05-01 21:47:05.800616"], ["updated_at", "2015-05-01 21:47:05.800616"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "phone_number", "password_digest", "location", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["first_name", "Maggie"], ["last_name", "Li"], ["phone_number", "2345678901"], ["password_digest", "$2a$10$NUEV0X2KuAjYWlfSqmhi9e1OymJMYXDwBlzG09tGZc7U47ANiNQx2"], ["location", "West-Wing"], ["created_at", "2015-05-01 21:47:05.858026"], ["updated_at", "2015-05-01 21:47:05.858026"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "grocery_lists" ("name", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "List 1"], ["user_id", 1], ["created_at", "2015-05-01 21:47:05.871487"], ["updated_at", "2015-05-01 21:47:05.871487"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "grocery_lists" ("name", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "List 2"], ["user_id", 2], ["created_at", "2015-05-01 21:47:05.875474"], ["updated_at", "2015-05-01 21:47:05.875474"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "items" ("name", "amount", "grocery_list_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Eggs"], ["amount", "1 dozen"], ["grocery_list_id", 1], ["created_at", "2015-05-01 21:47:05.882921"], ["updated_at", "2015-05-01 21:47:05.882921"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "items" ("name", "amount", "grocery_list_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Milk"], ["amount", "1/2 gallon"], ["grocery_list_id", 1], ["created_at", "2015-05-01 21:47:05.886875"], ["updated_at", "2015-05-01 21:47:05.886875"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("name", "amount", "grocery_list_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Ham"], ["amount", "3 slices"], ["grocery_list_id", 1], ["created_at", "2015-05-01 21:47:05.890455"], ["updated_at", "2015-05-01 21:47:05.890455"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "items" ("name", "amount", "grocery_list_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Bread"], ["amount", "1 loaf"], ["grocery_list_id", 2], ["created_at", "2015-05-01 21:47:05.894137"], ["updated_at", "2015-05-01 21:47:05.894137"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("name", "amount", "grocery_list_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Lucky Charms"], ["amount", "11 boxes"], ["grocery_list_id", 2], ["created_at", "2015-05-01 21:47:05.897657"], ["updated_at", "2015-05-01 21:47:05.897657"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "orders" ("tip", "notes", "store", "delivery_time", "buyer_id", "shopper_id", "grocery_list_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["tip", 10], ["notes", "All organic please!"], ["store", "Giant Eagle Murray Ave"], ["delivery_time", "2015-04-01 01:15:00.000000"], ["buyer_id", 1], ["shopper_id", 2], ["grocery_list_id", 1], ["created_at", "2015-05-01 21:47:05.908532"], ["updated_at", "2015-05-01 21:47:05.908532"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "orders" ("tip", "notes", "store", "delivery_time", "buyer_id", "shopper_id", "grocery_list_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["tip", 12], ["notes", "No GMOs please!"], ["store", "Whole Foods"], ["delivery_time", "2015-04-01 02:45:00.000000"], ["buyer_id", 2], ["shopper_id", 1], ["grocery_list_id", 2], ["created_at", "2015-05-01 21:47:05.913210"], ["updated_at", "2015-05-01 21:47:05.913210"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+
+
+Started GET "/home" for 127.0.0.1 at 2015-05-01 17:47:16 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered home/index.html.erb within layouts/application (2.6ms)
+  Rendered partials/_content.html.erb (0.3ms)
+  Rendered partials/_footer.html.erb (0.3ms)
+Completed 200 OK in 238ms (Views: 206.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-05-01 17:47:20 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered users/show.html.erb within layouts/application (3.0ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 118ms (Views: 115.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/grocery_lists" for 127.0.0.1 at 2015-05-01 17:47:23 -0400
+Processing by GroceryListsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mGroceryList Load (0.1ms)[0m  [1mSELECT "grocery_lists".* FROM "grocery_lists" WHERE (user_id = 1)[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "items" WHERE "items"."grocery_list_id" = ?  [["grocery_list_id", 1]]
+  Rendered grocery_lists/index.html.erb within layouts/application (21.9ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 150ms (Views: 142.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/my_orders" for 127.0.0.1 at 2015-05-01 17:47:27 -0400
+Processing by OrdersController#my_orders as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mOrder Load (0.1ms)[0m  SELECT "orders".* FROM "orders" WHERE "orders"."buyer_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "items" WHERE "items"."grocery_list_id" = ?[0m  [["grocery_list_id", 1]]
+  Rendered orders/_list.html.erb (241.6ms)
+  Rendered orders/my_orders.html.erb within layouts/application (242.6ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 333ms (Views: 328.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/orders" for 127.0.0.1 at 2015-05-01 17:47:32 -0400
+Processing by OrdersController#index as HTML
+  [1m[35mOrder Load (0.1ms)[0m  SELECT "orders".* FROM "orders" WHERE "orders"."shopper_id" IS NULL
+  Rendered orders/_list.html.erb (2.3ms)
+  Rendered orders/index.html.erb within layouts/application (3.2ms)
+  Rendered partials/_content.html.erb (0.0ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 130ms (Views: 129.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2015-05-01 17:47:54 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/login
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2015-05-01 17:47:54 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (2.9ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 90ms (Views: 90.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2015-05-01 17:47:56 -0400
+Processing by UsersController#new as HTML
+  Rendered users/_form.html.erb (7.3ms)
+  Rendered users/new.html.erb within layouts/application (8.5ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 126ms (Views: 125.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2015-05-01 17:48:14 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9ptAEml/NfhZ88pzKPU48y3/nsAKMEOJVUfs+TwOCweVaIhtKZIQZsa0bkTFuSb+Zrx569+zxgKpUiXMJoyjyw==", "user"=>{"first_name"=>"Test", "last_name"=>"Account", "phone_number"=>"1111111111", "location"=>"Boss", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("first_name", "last_name", "phone_number", "location", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["first_name", "Test"], ["last_name", "Account"], ["phone_number", "1111111111"], ["location", "Boss"], ["password_digest", "$2a$10$IKOFEN0anDsxYkmkJsILX.1O0IFbjIHBbMeQAuAwEZu1n6UXMaO6G"], ["created_at", "2015-05-01 21:48:14.705431"], ["updated_at", "2015-05-01 21:48:14.705431"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/home
+Completed 302 Found in 70ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2015-05-01 17:48:14 -0400
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered home/index.html.erb within layouts/application (0.7ms)
+  Rendered partials/_content.html.erb (0.0ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 88ms (Views: 86.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/grocery_lists" for 127.0.0.1 at 2015-05-01 17:48:31 -0400
+Processing by GroceryListsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mGroceryList Load (0.1ms)[0m  SELECT "grocery_lists".* FROM "grocery_lists" WHERE (user_id = 3)
+  Rendered grocery_lists/index.html.erb within layouts/application (1.7ms)
+  Rendered partials/_content.html.erb (0.0ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 125ms (Views: 122.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/grocery_lists/new" for 127.0.0.1 at 2015-05-01 17:48:32 -0400
+Processing by GroceryListsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered grocery_lists/_form.html.erb (15.9ms)
+  Rendered grocery_lists/new.html.erb within layouts/application (17.0ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 141ms (Views: 135.9ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/grocery_lists" for 127.0.0.1 at 2015-05-01 17:48:48 -0400
+Processing by GroceryListsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"d+NoGlCL1uqI7rwRGs1FJYZSRNcLxaIVHuLMRFUuQRAUEKBlEGbzdBepGCb3gVsozRGj/N5GJ57i9wVxT6zp3A==", "grocery_list"=>{"name"=>"Test List", "user_id"=>"3", "items_attributes"=>{"0"=>{"_destroy"=>"false", "name"=>"Test Item", "amount"=>"5"}}}, "commit"=>"Create Grocery list"}
+Unpermitted parameter: _destroy
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "grocery_lists" ("name", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Test List"], ["user_id", 3], ["created_at", "2015-05-01 21:48:48.179207"], ["updated_at", "2015-05-01 21:48:48.179207"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "items" ("name", "amount", "grocery_list_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Test Item"], ["amount", "5"], ["grocery_list_id", 3], ["created_at", "2015-05-01 21:48:48.182085"], ["updated_at", "2015-05-01 21:48:48.182085"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/grocery_lists/3
+Completed 302 Found in 13ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/grocery_lists/3" for 127.0.0.1 at 2015-05-01 17:48:48 -0400
+Processing by GroceryListsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mGroceryList Load (0.1ms)[0m  SELECT  "grocery_lists".* FROM "grocery_lists" WHERE "grocery_lists"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."grocery_list_id" = ?[0m  [["grocery_list_id", 3]]
+  Rendered grocery_lists/show.html.erb within layouts/application (3.0ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 101ms (Views: 98.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2015-05-01 17:48:54 -0400
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered home/index.html.erb within layouts/application (0.6ms)
+  Rendered partials/_content.html.erb (0.0ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 111ms (Views: 108.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/my_orders" for 127.0.0.1 at 2015-05-01 17:49:06 -0400
+Processing by OrdersController#my_orders as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mOrder Load (0.1ms)[0m  SELECT "orders".* FROM "orders" WHERE "orders"."buyer_id" = 3
+  Rendered orders/_list.html.erb (2.0ms)
+  Rendered orders/my_orders.html.erb within layouts/application (2.7ms)
+  Rendered partials/_content.html.erb (0.0ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 95ms (Views: 93.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/orders/new" for 127.0.0.1 at 2015-05-01 17:49:07 -0400
+Processing by OrdersController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mGroceryList Load (0.1ms)[0m  SELECT "grocery_lists".* FROM "grocery_lists" WHERE (user_id = 3)
+  Rendered orders/_form.html.erb (8.5ms)
+  Rendered orders/new.html.erb within layouts/application (9.5ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 123ms (Views: 122.8ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/orders" for 127.0.0.1 at 2015-05-01 17:49:27 -0400
+Processing by OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SEydSbdRvq780LNiocvDaF8ELh9ejJIwEFkYWCqldSorv1U297ybMGOXF1VMh91lFEfJNIsPF7vsTNFtMCfd5g==", "order"=>{"grocery_list_id"=>"3", "notes"=>"Test Order", "tip"=>"100", "store"=>"GEagle", "delivery_time"=>"2015-05-01T19:49:07-04:00"}, "commit"=>"Create Order"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "orders" ("tip", "notes", "store", "delivery_time", "grocery_list_id", "buyer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["tip", 100], ["notes", "Test Order"], ["store", "GEagle"], ["delivery_time", "2015-05-01 23:49:07.000000"], ["grocery_list_id", 3], ["buyer_id", 3], ["created_at", "2015-05-01 21:49:27.343838"], ["updated_at", "2015-05-01 21:49:27.343838"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+Redirected to http://localhost:3000/orders/3
+Completed 302 Found in 11ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/orders/3" for 127.0.0.1 at 2015-05-01 17:49:27 -0400
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mOrder Load (0.1ms)[0m  [1mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."grocery_list_id" = ?[0m  [["grocery_list_id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered orders/show.html.erb within layouts/application (7.9ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 114ms (Views: 111.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2015-05-01 17:49:33 -0400
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered home/index.html.erb within layouts/application (0.6ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 110ms (Views: 108.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2015-05-01 17:50:20 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/login
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2015-05-01 17:50:20 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.9ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 106ms (Views: 105.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2015-05-01 17:50:27 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MLZ1foXhdLqYWj2X+m1oYwTYFNFPmCrPsVHVDNrmM4BTRb0BxQxRJAcdmaAXIXZuT5vz+pobr0RNRBw5wGSbTA==", "phone_number"=>"1234567890", "password"=>"[FILTERED]", "commit"=>"Log In"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone_number" = ? LIMIT 1  [["phone_number", "1234567890"]]
+Redirected to http://localhost:3000/home
+Completed 302 Found in 70ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2015-05-01 17:50:27 -0400
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered home/index.html.erb within layouts/application (0.6ms)
+  Rendered partials/_content.html.erb (0.0ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 96ms (Views: 93.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/orders" for 127.0.0.1 at 2015-05-01 17:50:28 -0400
+Processing by OrdersController#index as HTML
+  [1m[35mOrder Load (0.1ms)[0m  SELECT "orders".* FROM "orders" WHERE "orders"."shopper_id" IS NULL
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "items" WHERE "items"."grocery_list_id" = ?[0m  [["grocery_list_id", 3]]
+  Rendered orders/_list.html.erb (4.8ms)
+  Rendered orders/index.html.erb within layouts/application (5.4ms)
+  Rendered partials/_content.html.erb (0.0ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 112ms (Views: 111.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/orders/3" for 127.0.0.1 at 2015-05-01 17:50:30 -0400
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mOrder Load (0.1ms)[0m  SELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."grocery_list_id" = ?  [["grocery_list_id", 3]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered orders/show.html.erb within layouts/application (6.5ms)
+  Rendered partials/_content.html.erb (0.0ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 110ms (Views: 108.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/accept_order/3" for 127.0.0.1 at 2015-05-01 17:50:32 -0400
+Processing by OrdersController#accept_order as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mOrder Load (0.1ms)[0m  SELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "orders" SET "shopper_id" = ?, "updated_at" = ? WHERE "orders"."id" = ?[0m  [["shopper_id", 1], ["updated_at", "2015-05-01 21:50:32.274952"], ["id", 3]]
+  [1m[35m (1.5ms)[0m  commit transaction
+Redirected to http://localhost:3000/orders/3
+Completed 302 Found in 19ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/orders/3" for 127.0.0.1 at 2015-05-01 17:50:32 -0400
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mOrder Load (0.1ms)[0m  [1mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."grocery_list_id" = ?  [["grocery_list_id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered orders/show.html.erb within layouts/application (19.9ms)
+Completed 500 Internal Server Error in 24ms
+
+NoMethodError - undefined method `complete_order_path' for #<#<Class:0x007fa501182ce0>:0x007fa5014f4540>:
+  app/views/orders/show.html.erb:54:in `_app_views_orders_show_html_erb__2041003244610665072_70173277602900'
+  actionview (4.2.0) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.2.0) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.0) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.0) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+  actionview (4.2.0) lib/action_view/renderer/abstract_renderer.rb:39:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `instrument'
+  actionview (4.2.0) lib/action_view/renderer/abstract_renderer.rb:39:in `instrument'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:14:in `render'
+  actionview (4.2.0) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.0) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.0) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.0) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.0) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.0) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.0) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.2.0) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/Matthew/.rbenv/versions/2.1.5/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.2.0) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.0) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:151:in `block in halting_and_conditional'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_process_action_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.0) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal.rb:236:in `block in action'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:42:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:802:in `call'
+  meta_request (0.3.4) lib/meta_request/middlewares/app_request_handler.rb:13:in `call'
+  meta_request (0.3.4) lib/meta_request/middlewares/meta_request_handler.rb:13:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:647:in `call'
+  activerecord (4.2.0) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  rack-contrib (1.2.0) lib/rack/contrib/response_headers.rb:17:in `call'
+  meta_request (0.3.4) lib/meta_request/middlewares/headers.rb:16:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.1.0) lib/quiet_assets.rb:27:in `call_with_quiet_assets'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  thin (1.6.3) lib/thin/connection.rb:86:in `block in pre_process'
+  thin (1.6.3) lib/thin/connection.rb:84:in `pre_process'
+  thin (1.6.3) lib/thin/connection.rb:53:in `process'
+  thin (1.6.3) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.7) lib/eventmachine.rb:187:in `run'
+  thin (1.6.3) lib/thin/backends/base.rb:73:in `start'
+  thin (1.6.3) lib/thin/server.rb:162:in `start'
+  rack (1.6.0) lib/rack/handler/thin.rb:19:in `run'
+  rack (1.6.0) lib/rack/server.rb:286:in `start'
+  railties (4.2.0) lib/rails/commands/server.rb:80:in `start'
+  railties (4.2.0) lib/rails/commands/commands_tasks.rb:80:in `block in server'
+  railties (4.2.0) lib/rails/commands/commands_tasks.rb:75:in `server'
+  railties (4.2.0) lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+  railties (4.2.0) lib/rails/commands.rb:17:in `<top (required)>'
+  bin/rails:8:in `<main>'
+
+
+
+Started POST "/__better_errors/39832b02df789dc8/variables" for 127.0.0.1 at 2015-05-01 17:50:32 -0400
+
+
+Started GET "/orders/3" for 127.0.0.1 at 2015-05-01 17:50:50 -0400
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mOrder Load (0.1ms)[0m  SELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."grocery_list_id" = ?[0m  [["grocery_list_id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered orders/show.html.erb within layouts/application (8.9ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 97ms (Views: 94.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2015-05-01 17:50:57 -0400
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered home/index.html.erb within layouts/application (0.7ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 101ms (Views: 99.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/shopping" for 127.0.0.1 at 2015-05-01 17:51:00 -0400
+Processing by OrdersController#shopping as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mOrder Load (0.1ms)[0m  [1mSELECT "orders".* FROM "orders" WHERE "orders"."shopper_id" = 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "items" WHERE "items"."grocery_list_id" = ?  [["grocery_list_id", 2]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "items" WHERE "items"."grocery_list_id" = ?[0m  [["grocery_list_id", 3]]
+  Rendered orders/_list.html.erb (13.5ms)
+  Rendered orders/shopping.html.erb within layouts/application (14.6ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 127ms (Views: 125.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/orders/3" for 127.0.0.1 at 2015-05-01 17:51:03 -0400
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mOrder Load (0.1ms)[0m  SELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."grocery_list_id" = ?[0m  [["grocery_list_id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered orders/show.html.erb within layouts/application (7.9ms)
+  Rendered partials/_content.html.erb (0.0ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 118ms (Views: 116.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/orders/3" for 127.0.0.1 at 2015-05-01 17:51:43 -0400
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mOrder Load (0.1ms)[0m  [1mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."grocery_list_id" = ?  [["grocery_list_id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered orders/show.html.erb within layouts/application (8.4ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 108ms (Views: 105.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/complete/3" for 127.0.0.1 at 2015-05-01 17:51:45 -0400
+Processing by OrdersController#complete as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mOrder Load (0.1ms)[0m  SELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "orders" SET "complete" = ?, "updated_at" = ? WHERE "orders"."id" = ?  [["complete", "t"], ["updated_at", "2015-05-01 21:51:45.966308"], ["id", 3]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/orders/3
+Completed 302 Found in 11ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/orders/3" for 127.0.0.1 at 2015-05-01 17:51:45 -0400
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mOrder Load (0.1ms)[0m  SELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."grocery_list_id" = ?[0m  [["grocery_list_id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered orders/show.html.erb within layouts/application (7.0ms)
+  Rendered partials/_content.html.erb (0.1ms)
+  Rendered partials/_footer.html.erb (0.0ms)
+Completed 200 OK in 117ms (Views: 115.4ms | ActiveRecord: 0.3ms)

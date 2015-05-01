@@ -33,11 +33,12 @@ ActiveRecord::Schema.define(version: 20150223005245) do
     t.text     "notes"
     t.string   "store"
     t.datetime "delivery_time"
+    t.boolean  "complete",        default: false
     t.integer  "buyer_id"
     t.integer  "shopper_id"
     t.integer  "grocery_list_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "users", force: :cascade do |t|

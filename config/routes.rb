@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'my_orders', to: 'orders#my_orders', as: :my_orders
   get 'accept_order/:id', to: 'orders#accept_order', as: :accept_order
   get 'shopping', to: 'orders#shopping', as: :shopping
+  get 'complete/:id', to: 'orders#complete', as: :complete
   
   # set the root URL
   root to: 'sessions#new'
