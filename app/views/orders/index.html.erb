@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <h1>Open Orders</h1>
 
@@ -17,7 +16,11 @@
       <tr>
         <td><%= order.num_items %></td>
         <td><%= number_to_currency order.tip %></td>
-				<td><%= order.delivery_time.strftime('%B %e, %Y %I:%M %P') %></td>
+				<td><%if order.delivery_time.nil? %>
+                <%= 'Anytime' %>
+             <% else %>
+                <%= order.delivery_time.strftime('%B %e, %Y %I:%M %P') %></td>
+            <% end %>
         <td><%= link_to 'More...', order %></td>
       </tr>
     <% end %>
