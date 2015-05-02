@@ -1,5 +1,68 @@
 <h1>My Orders</h1>
 
-<%= render 'list' %>
+<h3>Incomplete</h3>
+
+<% if @incomplete.empty? %>
+
+	<p>No Incomplete Orders</p>
+
+<% else %>
+
+	<table>
+	  <thead>
+	    <tr>
+	      <th>Items</th>
+	      <th>Tip</th>
+	      <th>Delivery Time</th>
+	      <th></th>
+	    </tr>
+	  </thead>
+
+	  <tbody>
+	    <% @incomplete.each do |order| %>
+	      <tr>
+	        <td><%= order.num_items %></td>
+	        <td><%= number_to_currency order.tip %></td>
+					<td><%= order.delivery_time.strftime('%A %-I:%M %P') %></td>
+	        <td><%= link_to 'More...', order %></td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+
+<% end %>
+
+<h3>Completed</h3>
+
+<% if @completed.empty? %>
+
+	<p>No Completed Orders</p>
+
+<% else %>
+
+	<table>
+	  <thead>
+	    <tr>
+	      <th>Items</th>
+	      <th>Tip</th>
+	      <th>Delivery Time</th>
+	      <th></th>
+	    </tr>
+	  </thead>
+
+	  <tbody>
+	    <% @completed.each do |order| %>
+	      <tr>
+	        <td><%= order.num_items %></td>
+	        <td><%= number_to_currency order.tip %></td>
+					<td><%= order.delivery_time.strftime('%A %-I:%M %P') %></td>
+	        <td><%= link_to 'More...', order %></td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+
+<% end %>
 
 <%= link_to 'New Order', new_order_path, class: 'button round' %>
+<%= link_to 'Home', home_path, class: 'button round secondary' %>

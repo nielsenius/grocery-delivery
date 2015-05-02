@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   
-  LOCATIONS = %w[Boss Donner Hamerschlag McGill Morewood-E-Tower Morewood-Gardens Mudge Resnik Scobell Stever Welch West-Wing Clyde Doherty Fairfax Margaret-Morrison Neville Residence-on-Fifth Roselawn Shady-Oak Shirley Webster Woodlawn]
+  LOCATIONS = %w[Boss Craig-407 Craig-300 Donner Hamerschlag McGill Morewood-E-Tower Morewood-Gardens Mudge Resnik Scobell Stever Welch West-Wing Clyde Doherty Fairfax Margaret-Morrison Neville Residence-on-Fifth Roselawn Shady-Oak Shirley Webster Woodlawn]
   ROLES = [['Administrator', :admin], ['Member', :member]]
   
   has_many :orders

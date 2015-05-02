@@ -10,7 +10,8 @@ class OrdersController < ApplicationController
   
   # GET /shopping
   def shopping
-    @orders = Order.where(shopper_id: current_user).all
+    u_id = current_user.id
+    @orders = Order.where("shopper_id = ? AND complete = ?", u_id, false).all
   end
   
   # GET /accept_order/1
@@ -22,12 +23,15 @@ class OrdersController < ApplicationController
   
   # GET /my_orders
   def my_orders
-    @orders = Order.where(buyer_id: current_user).all
+    u_id = current_user.id
+    @completed = Order.where("buyer_id = ? AND complete = ?", u_id, true).all
+    @incomplete = Order.where("buyer_id = ? AND complete = ?", u_id, false).all
   end
   
   # GET /orders
   def index
-    @orders = Order.where(shopper_id: nil).all
+    u_id = current_user.id
+    @orders = Order.where("shopper_id IS NULL AND complete = ? AND buyer_id <> ?", false, u_id).all
   end
 
   # GET /orders/1

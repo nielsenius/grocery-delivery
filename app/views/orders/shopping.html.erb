@@ -1,3 +1,9 @@
-<h1>Shopping For</h1>
+<h1>Shopping Lists</h1>
 
-<%= render 'list' %>
+<% if @orders.empty? %>
+	<p>You Have No Shopping Lists</p>
+<% else %>
+	<%= render 'list' %>
+<% end %>
+
+<%= link_to 'Home', home_path, class: 'button round secondary' %>
