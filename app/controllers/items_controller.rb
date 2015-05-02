@@ -22,7 +22,9 @@ class ItemsController < ApplicationController
   # POST /items
   def create
     @item = Item.new(item_params)
-    
+    @gro = GroceryList.find_by_id(params[:grocery_list_id])
+    @item.grocery_list_id = @grocery_list_id
+
     if @item.save
       redirect_to @item
     else
