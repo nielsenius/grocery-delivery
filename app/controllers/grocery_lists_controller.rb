@@ -26,7 +26,7 @@ class GroceryListsController < ApplicationController
     @grocery_list = GroceryList.new(grocery_list_params)
     
     if @grocery_list.save
-      redirect_to @grocery_list
+      redirect_to @grocery_list, notice: "Grocery list added!"
     else
       render action: 'new'
     end

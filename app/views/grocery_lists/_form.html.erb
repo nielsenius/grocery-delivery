@@ -5,6 +5,7 @@
         <legend><%= controller.action_name.capitalize %> Grocery List</legend>
 	  		<%= list_form.input :name %>
 	  		<%= list_form.input :user_id %>
+        <%= list_form.number_field :user_id, :readonly => true, placeholder: @grocery_list.user_id %>
       </fieldset>
     </div>
 
