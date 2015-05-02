@@ -1,9 +1,13 @@
 <h1>Open Orders</h1>
 
+<br />
+
 <% if @orders.empty? %>
 	<p>No Open Orders</p>
 <% else %>
 	<%= render 'list' %>
 <% end %>
+
+<br />
 
 <%= link_to 'Home', home_path, class: 'button round secondary' %>

@@ -1,5 +1,7 @@
 <h1>My Profile</h1>
 
+<br />
+
 <table>
   <tr>
 		<td>Name</td>
@@ -14,6 +16,8 @@
     <td><%= @user.location %></td>
   </tr>
 </table>
+
+<br />
 
 <%= link_to 'Edit Profile', edit_user_path(@user), class: 'button round' %>
 <%= link_to 'Home', home_path, class: 'button round secondary' %>

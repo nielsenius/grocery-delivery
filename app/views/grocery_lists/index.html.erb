@@ -1,5 +1,7 @@
 <h1>My Grocery Lists</h1>
 
+<br />
+
 <% if @grocery_lists.empty? %>
 
 	<p>You Have No Lists</p>
@@ -27,6 +29,8 @@
 	</table>
 
 <% end %>
+
+<br />
 
 <%= link_to 'New list', new_grocery_list_path, class: 'button round' %>
 <%= link_to 'Home', home_path, class: 'button round secondary' %>

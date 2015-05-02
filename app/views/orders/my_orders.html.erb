@@ -1,5 +1,7 @@
 <h1>My Orders</h1>
 
+<br />
+
 <h3>Incomplete</h3>
 
 <% if @incomplete.empty? %>
@@ -32,6 +34,8 @@
 
 <% end %>
 
+<br />
+
 <h3>Completed</h3>
 
 <% if @completed.empty? %>
@@ -63,6 +67,8 @@
 	</table>
 
 <% end %>
+
+<br />
 
 <%= link_to 'New Order', new_order_path, class: 'button round' %>
 <%= link_to 'Home', home_path, class: 'button round secondary' %>
