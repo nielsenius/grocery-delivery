@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to home_path, :notice => 'User was successfully created.'
+      redirect_to home_path
     else
       render :action => "new"
     end    
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   def update
     # @user = current_user # User.find(params[:id])
     if @user.update_attributes(user_params)
-      redirect_to(@user, :notice => 'User was successfully updated.')
+      redirect_to @user
     else
       render :action => "edit"
     end

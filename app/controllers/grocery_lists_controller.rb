@@ -55,6 +55,6 @@ class GroceryListsController < ApplicationController
 
     # White list parameters
     def grocery_list_params
-      params.require(:grocery_list).permit(:name, :user_id, items_attributes: [:name, :amount, :grocery_list_id])
+      params.require(:grocery_list).permit(:name, :user_id, items_attributes: [:id, :name, :amount, :grocery_list_id, :_destroy])
     end
 end

@@ -1,4 +1,8 @@
-<h1>My Profile</h1>
+<% if @user == current_user %>
+	<h1>My Profile</h1>
+<% else %>
+	<h1><%= @user.proper_name %></h1>
+<% end %>
 
 <br />
 
@@ -19,5 +23,7 @@
 
 <br />
 
-<%= link_to 'Edit Profile', edit_user_path(@user), class: 'button round' %>
+<% if @user == current_user %>
+	<%= link_to 'Edit Profile', edit_user_path(@user), class: 'button round' %>
+<% end %>
 <%= link_to 'Home', home_path, class: 'button round secondary' %>

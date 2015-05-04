@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     user = User.find_by_phone_number(params[:phone_number])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to home_path, notice: "Logged in!"
+      redirect_to home_path
     else
       flash.now.alert = "Phone number or password is invalid"
       render "new"
